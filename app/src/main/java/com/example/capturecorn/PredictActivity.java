@@ -16,7 +16,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.capturecorn.R;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.Interpreter;
@@ -40,16 +46,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.HorizontalBarChart;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
-
-
 public class PredictActivity extends AppCompatActivity {
 
     protected Interpreter tflite;
@@ -57,8 +53,8 @@ public class PredictActivity extends AppCompatActivity {
     private TensorImage inputImageBuffer;
     private  int imageSizeX;
     private  int imageSizeY;
-    private  TensorBuffer outputProbabilityBuffer;
-    private  TensorProcessor probabilityProcessor;
+    private TensorBuffer outputProbabilityBuffer;
+    private TensorProcessor probabilityProcessor;
     private static final float IMAGE_MEAN = 0.0f;
     private static final float IMAGE_STD = 1.0f;
     private static final float PROBABILITY_MEAN = 0.0f;
@@ -72,18 +68,14 @@ public class PredictActivity extends AppCompatActivity {
 
     TextView prediction;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_predict);
+
         imageView=(ImageView)findViewById(R.id.image);
         buclassify=(Button)findViewById(R.id.classify);
         prediction=(TextView)findViewById(R.id.predictions);
-
-
-
-
 
 
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -181,7 +173,7 @@ public class PredictActivity extends AppCompatActivity {
         barChart.setDrawGridBackground(true);
         BarDataSet barDataSet = new BarDataSet(arrayList, "Class");
         barDataSet.setColors(new int[]{Color.parseColor("#FF0051"), Color.parseColor("#00FFBF"),
-        Color.parseColor("#76FF03"), Color.parseColor("#E91E63"), Color.parseColor("#2962FF")});
+                Color.parseColor("#76FF03"), Color.parseColor("#E91E63"), Color.parseColor("#2962FF")});
         //barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         BarData barData = new BarData(barDataSet);
         barData.setBarWidth(0.9f);
@@ -233,7 +225,7 @@ public class PredictActivity extends AppCompatActivity {
                 barEntries.add(new BarEntry(i, label_probability[i]*100));
             }
 
-        // TO ADD THE VALUES IN X-AXIS
+            // TO ADD THE VALUES IN X-AXIS
             ArrayList<String> xAxisName = new ArrayList<>();
             for(int i=0;i<label.length; i++)
             {
@@ -243,7 +235,7 @@ public class PredictActivity extends AppCompatActivity {
             prediction.setText("Predictions:");
 
 
- //           }
+            //           }
         }
     }
 
@@ -261,5 +253,4 @@ public class PredictActivity extends AppCompatActivity {
             }
         }
     }
-}
-
+    }
