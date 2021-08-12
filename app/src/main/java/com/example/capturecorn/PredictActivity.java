@@ -1,4 +1,4 @@
-package com.example.cartoonclassification;
+package com.example.capturecorn;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,10 +14,9 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.example.cartoonclassification.R;
+import com.example.capturecorn.R;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.Interpreter;
@@ -44,18 +43,14 @@ import java.util.Map;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
-import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 
-
-
-public class MainActivity extends AppCompatActivity {
+public class PredictActivity extends AppCompatActivity {
 
     protected Interpreter tflite;
     private MappedByteBuffer tfliteModel;
@@ -81,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_predict);
         imageView=(ImageView)findViewById(R.id.image);
         buclassify=(Button)findViewById(R.id.classify);
         prediction=(TextView)findViewById(R.id.predictions);
@@ -102,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         try{
-            tflite=new Interpreter(loadmodelfile(MainActivity.this));
+            tflite=new Interpreter(loadmodelfile(PredictActivity.this));
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -161,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private MappedByteBuffer loadmodelfile(Activity activity) throws IOException {
-        AssetFileDescriptor fileDescriptor=activity.getAssets().openFd("cartoon_model.tflite");
+        AssetFileDescriptor fileDescriptor=activity.getAssets().openFd("model.tflite");
         FileInputStream inputStream=new FileInputStream(fileDescriptor.getFileDescriptor());
         FileChannel fileChannel=inputStream.getChannel();
         long startoffset = fileDescriptor.getStartOffset();
@@ -185,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
         barChart.setDrawGridBackground(true);
         BarDataSet barDataSet = new BarDataSet(arrayList, "Class");
-        barDataSet.setColors(new int[]{Color.parseColor("#03A9F4"), Color.parseColor("#FF9800"),
+        barDataSet.setColors(new int[]{Color.parseColor("#FF0051"), Color.parseColor("#00FFBF"),
         Color.parseColor("#76FF03"), Color.parseColor("#E91E63"), Color.parseColor("#2962FF")});
         //barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         BarData barData = new BarData(barDataSet);
@@ -201,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
         //l.setFormSize(10f);
 //To set components of x axis
         XAxis xAxis = barChart.getXAxis();
-        xAxis.setTextSize(13f);
+        xAxis.setTextSize(18f);
         xAxis.setPosition(XAxis.XAxisPosition.TOP_INSIDE);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(xAxisValues));
         xAxis.setDrawGridLines(false);
@@ -214,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
     private void showresult(){
 
         try{
-            labels = FileUtil.loadLabels(MainActivity.this,"cartoon_labels.txt");
+            labels = FileUtil.loadLabels(PredictActivity.this,"labels.txt");
         }catch (Exception e){
             e.printStackTrace();
         }
