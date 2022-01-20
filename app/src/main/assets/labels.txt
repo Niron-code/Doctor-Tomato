@@ -1,3 +1,2 @@
-car
-aeroplane
-cycle
+Infected
+Healthy
