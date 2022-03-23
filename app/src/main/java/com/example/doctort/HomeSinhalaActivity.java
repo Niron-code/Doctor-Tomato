@@ -1,4 +1,4 @@
-package com.example.capturecorn;
+package com.example.doctort;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.example.doctort.R;
 
 public class HomeSinhalaActivity extends AppCompatActivity {
 

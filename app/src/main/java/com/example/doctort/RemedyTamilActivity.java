@@ -1,4 +1,4 @@
-package com.example.capturecorn;
+package com.example.doctort;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,15 +8,16 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class RemedySinhalaActivity extends AppCompatActivity {
+import com.example.doctort.R;
 
+public class RemedyTamilActivity extends AppCompatActivity {
 
     private ImageButton play, pause, stop;
     private MediaPlayer player;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_remedy_sinhala);
+        setContentView(R.layout.activity_remedy_tamil);
         play = (ImageButton) findViewById(R.id.btnplay);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,30 +40,27 @@ public class RemedySinhalaActivity extends AppCompatActivity {
             }
         });
     }
-
     private void setPlay() {
         if(player == null){
-            player = MediaPlayer.create(RemedySinhalaActivity.this, R.raw.remedysinhala);
+            player = MediaPlayer.create(RemedyTamilActivity.this, R.raw.tamilremedy);
         }
         player.start();
-        Toast.makeText(this,"ආරම්භ කළා", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"ஆரம்பமாகிவிட்டது", Toast.LENGTH_SHORT).show();
     }
 
 
     private void setPause() {
         if(player != null){
             player.pause();
-            Toast.makeText(this,"විරාම කළා", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"இடைநிறுத்தப்பட்டது", Toast.LENGTH_SHORT).show();
         }
 
     }
 
     private void setStop() {
-        if(player != null) {
-            player.stop();
-            Toast.makeText(this, "නැවැත්තුවා", Toast.LENGTH_SHORT).show();
-            player = MediaPlayer.create(RemedySinhalaActivity.this, R.raw.remedysinhala);
-        }
+        player.stop();
+        player = MediaPlayer.create(RemedyTamilActivity.this, R.raw.tamilremedy);
+        Toast.makeText(this,"நிறுத்தப்பட்டது", Toast.LENGTH_SHORT).show();
     }
 
     @Override

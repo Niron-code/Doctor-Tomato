@@ -1,4 +1,4 @@
-package com.example.capturecorn;
+package com.example.doctort;
 
 import org.junit.Test;
 

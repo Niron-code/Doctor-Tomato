@@ -1,4 +1,4 @@
-package com.example.capturecorn;
+package com.example.doctort;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,14 +8,17 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class RemedyEnglishActivity extends AppCompatActivity {
+import com.example.doctort.R;
+
+public class RemedySinhalaActivity extends AppCompatActivity {
+
 
     private ImageButton play, pause, stop;
     private MediaPlayer player;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_remedy_english);
+        setContentView(R.layout.activity_remedy_sinhala);
         play = (ImageButton) findViewById(R.id.btnplay);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,28 +41,30 @@ public class RemedyEnglishActivity extends AppCompatActivity {
             }
         });
     }
+
     private void setPlay() {
         if(player == null){
-            player = MediaPlayer.create(RemedyEnglishActivity.this, R.raw.englishremedy);
-
+            player = MediaPlayer.create(RemedySinhalaActivity.this, R.raw.remedysinhala);
         }
-        Toast.makeText(this,"Playing", Toast.LENGTH_SHORT).show();
         player.start();
+        Toast.makeText(this,"ආරම්භ කළා", Toast.LENGTH_SHORT).show();
     }
 
 
     private void setPause() {
         if(player != null){
             player.pause();
-            Toast.makeText(this,"Paused", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"විරාම කළා", Toast.LENGTH_SHORT).show();
         }
 
     }
 
     private void setStop() {
-        player.stop();
-        Toast.makeText(this,"Stopped", Toast.LENGTH_SHORT).show();
-        player = MediaPlayer.create(RemedyEnglishActivity.this, R.raw.englishremedy);
+        if(player != null) {
+            player.stop();
+            Toast.makeText(this, "නැවැත්තුවා", Toast.LENGTH_SHORT).show();
+            player = MediaPlayer.create(RemedySinhalaActivity.this, R.raw.remedysinhala);
+        }
     }
 
     @Override

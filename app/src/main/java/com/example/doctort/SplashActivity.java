@@ -1,10 +1,12 @@
-package com.example.capturecorn;
+package com.example.doctort;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.doctort.R;
 
 public class SplashActivity extends AppCompatActivity {
 

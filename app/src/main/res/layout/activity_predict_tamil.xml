@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PredictTamilActivity">
+    tools:context="com.example.doctort.PredictTamilActivity">
 
     <ImageView
         android:id="@+id/background"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/predict_bg_new"
+        app:srcCompat="@drawable/predict_background2"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp"></ImageView>
 
@@ -20,7 +20,7 @@
         android:layout_width="327dp"
         android:layout_height="310dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/image1"
+        android:src="@drawable/image22"
         app:layout_constraintBottom_toTopOf="@+id/btn_classify_sinhala"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

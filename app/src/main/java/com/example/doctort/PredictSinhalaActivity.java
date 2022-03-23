@@ -1,4 +1,4 @@
-package com.example.capturecorn;
+package com.example.doctort;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.doctort.R;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -52,7 +53,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-public class PredictTamilActivity extends AppCompatActivity {
+public class PredictSinhalaActivity extends AppCompatActivity {
 
     protected Interpreter tflite;
     private MappedByteBuffer tfliteModel;
@@ -63,38 +64,37 @@ public class PredictTamilActivity extends AppCompatActivity {
     private TensorProcessor probabilityProcessor;
     private Bitmap bitmap;
     private List<String> labels;
-    private HorizontalBarChart horizontalBarChart;
+    private HorizontalBarChart mBarChart;
     private ImageView imageView;
     private static final float IMAGE_MEAN = 0.0f;
     private static final float IMAGE_STD = 1.0f;
     private static final float PROBABILITY_MEAN = 0.0f;
     private static final float PROBABILITY_STD = 255.0f;
     Uri imageuri;
-    private Button buclassifytamil;
-    private Button selecttamil;
-    private ImageButton btnCameratamil;
+    private Button buclassifySinhala;
+    private Button selectSinhala;
+    private ImageButton btnCameraSinhala;
 
     TextView predictiontext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_predict_tamil);
-
+        setContentView(R.layout.activity_predict_sinhala);
         imageView=(ImageView)findViewById(R.id.image);
-        buclassifytamil=(Button)findViewById(R.id.btn_classify_sinhala);
-        selecttamil = (Button) findViewById(R.id.btn_select_sinhala);
+        buclassifySinhala=(Button)findViewById(R.id.btn_classify_sinhala);
+        selectSinhala = (Button) findViewById(R.id.btn_select_sinhala);
         predictiontext=(TextView)findViewById(R.id.predictions_sinhala);
-        btnCameratamil = (ImageButton) findViewById(R.id.Camera);
+        btnCameraSinhala = (ImageButton) findViewById(R.id.Camera);
 
-        if(ContextCompat.checkSelfPermission(PredictTamilActivity.this,
+        if(ContextCompat.checkSelfPermission(PredictSinhalaActivity.this,
                 Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(PredictTamilActivity.this,
+            ActivityCompat.requestPermissions(PredictSinhalaActivity.this,
                     new String[]{Manifest.permission.CAMERA}, 101);
         }
 
 
-        btnCameratamil.setOnClickListener(new View.OnClickListener() {
+        btnCameraSinhala.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent camera_intent =  new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -104,7 +104,7 @@ public class PredictTamilActivity extends AppCompatActivity {
 
         // changing imageView to select
 
-        selecttamil.setOnClickListener(new View.OnClickListener() {
+        selectSinhala.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent();
@@ -115,24 +115,24 @@ public class PredictTamilActivity extends AppCompatActivity {
         });
 
         try{
-            tflite=new Interpreter(loadmodelfile(PredictTamilActivity.this));
+            tflite=new Interpreter(loadmodelfile(PredictSinhalaActivity.this));
         }catch (Exception e) {
             e.printStackTrace();
         }
 
-        buclassifytamil.setOnClickListener(new View.OnClickListener() {
+        buclassifySinhala.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 int imageTensorIndex = 0;
-                int[] imageShape = tflite.getInputTensor(imageTensorIndex).shape();
+                int[] imageShape = tflite.getInputTensor(imageTensorIndex).shape(); // {1, height, width, 3}
                 imageSizeY = imageShape[1];
                 imageSizeX = imageShape[2];
                 DataType imageDataType = tflite.getInputTensor(imageTensorIndex).dataType();
 
                 int probabilityTensorIndex = 0;
                 int[] probabilityShape =
-                        tflite.getOutputTensor(probabilityTensorIndex).shape();
+                        tflite.getOutputTensor(probabilityTensorIndex).shape(); // {1, NUM_CLASSES}
                 DataType probabilityDataType = tflite.getOutputTensor(probabilityTensorIndex).dataType();
 
                 inputImageBuffer = new TensorImage(imageDataType);
@@ -146,7 +146,6 @@ public class PredictTamilActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
 
@@ -159,7 +158,7 @@ public class PredictTamilActivity extends AppCompatActivity {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageuri);
                 imageView.setImageBitmap(bitmap);
-                Toast.makeText(this,"கணித்தல் பொத்தானை அழுத்தவும்", Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"පුරෝකථනය බොත්තම ක්ලික් කරන්න", Toast.LENGTH_LONG).show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -169,10 +168,10 @@ public class PredictTamilActivity extends AppCompatActivity {
 
             Bitmap bitmap1 = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(bitmap1);
-            Toast.makeText(this,"கணித்தல் பொத்தானை அழுத்தவும்", Toast.LENGTH_LONG).show();
-
+            Toast.makeText(this,"පුරෝකථනය බොත්තම ක්ලික් කරන්න", Toast.LENGTH_LONG).show();
         }
     }
+
 
     private TensorImage loadImage(final Bitmap bitmap) {
         // Loads bitmap into a TensorImage.
@@ -217,8 +216,8 @@ public class PredictTamilActivity extends AppCompatActivity {
         BarDataSet barDataSet = new BarDataSet(arrayList, "Class");
         barDataSet.setColors(new int[]
                 {Color.parseColor("#FF0051"),
-                        Color.parseColor("#00FFBF"),
-                        Color.parseColor("#76FF03"),
+                Color.parseColor("#00FFBF"),
+                Color.parseColor("#76FF03"),
                         Color.parseColor("#E91E63"),
                         Color.parseColor("#2962FF")});
 
@@ -245,7 +244,7 @@ public class PredictTamilActivity extends AppCompatActivity {
     private void showoutput(){
 
         try{
-            labels = FileUtil.loadLabels(PredictTamilActivity.this,"labels_tamil.txt");
+            labels = FileUtil.loadLabels(PredictSinhalaActivity.this,"labels_sinhala.txt");
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -259,9 +258,9 @@ public class PredictTamilActivity extends AppCompatActivity {
             String[] label = labeledProbability.keySet().toArray(new String[0]);
             Float[] label_probability = labeledProbability.values().toArray(new Float[0]);
 
-            horizontalBarChart = findViewById(R.id.chart);
-            horizontalBarChart.getXAxis().setDrawGridLines(false);
-            horizontalBarChart.getAxisLeft().setDrawGridLines(false);
+            mBarChart = findViewById(R.id.chart);
+            mBarChart.getXAxis().setDrawGridLines(false);
+            mBarChart.getAxisLeft().setDrawGridLines(false);
             // PREPARING THE ARRAY LIST OF BAR ENTRIES
             ArrayList<BarEntry> barEntries = new ArrayList<>();
             for(int i=0; i<label_probability.length; i++)
@@ -271,15 +270,20 @@ public class PredictTamilActivity extends AppCompatActivity {
 
             // TO ADD THE VALUES IN X-AXIS
             ArrayList<String> xAxisName = new ArrayList<>();
-            for(int i=0;i<2; i++)
+            for(int i=0;i<3; i++)
             {
                 xAxisName.add(label[i]);
             }
-            barchart(horizontalBarChart,barEntries,xAxisName);
-            predictiontext.setText("கணித்தல்:");
+            barchart(mBarChart,barEntries,xAxisName);
+            predictiontext.setText("පුරෝකථනය:");
+
+
 
         }
     }
 
-
+    /***
+     *
+     *got from here
+     */
 }

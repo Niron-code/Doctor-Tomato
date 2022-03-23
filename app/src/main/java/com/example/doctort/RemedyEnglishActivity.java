@@ -1,4 +1,4 @@
-package com.example.capturecorn;
+package com.example.doctort;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,14 +8,16 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class RemedyTamilActivity extends AppCompatActivity {
+import com.example.doctort.R;
+
+public class RemedyEnglishActivity extends AppCompatActivity {
 
     private ImageButton play, pause, stop;
     private MediaPlayer player;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_remedy_tamil);
+        setContentView(R.layout.activity_remedy_english);
         play = (ImageButton) findViewById(R.id.btnplay);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,25 +42,26 @@ public class RemedyTamilActivity extends AppCompatActivity {
     }
     private void setPlay() {
         if(player == null){
-            player = MediaPlayer.create(RemedyTamilActivity.this, R.raw.tamilremedy);
+            player = MediaPlayer.create(RemedyEnglishActivity.this, R.raw.englishremedy);
+
         }
+        Toast.makeText(this,"Playing", Toast.LENGTH_SHORT).show();
         player.start();
-        Toast.makeText(this,"ஆரம்பமாகிவிட்டது", Toast.LENGTH_SHORT).show();
     }
 
 
     private void setPause() {
         if(player != null){
             player.pause();
-            Toast.makeText(this,"இடைநிறுத்தப்பட்டது", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Paused", Toast.LENGTH_SHORT).show();
         }
 
     }
 
     private void setStop() {
         player.stop();
-        player = MediaPlayer.create(RemedyTamilActivity.this, R.raw.tamilremedy);
-        Toast.makeText(this,"நிறுத்தப்பட்டது", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Stopped", Toast.LENGTH_SHORT).show();
+        player = MediaPlayer.create(RemedyEnglishActivity.this, R.raw.englishremedy);
     }
 
     @Override

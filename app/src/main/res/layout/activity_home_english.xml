@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeEnglishActivity">
+    tools:context="com.example.doctort.HomeEnglishActivity">
 
     <ImageView
         android:id="@+id/backgroundEnglish"
@@ -13,6 +13,7 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/englishdashboard"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -25,10 +26,9 @@
         android:maxHeight="160dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnRemedySinhala"
-        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.578"
+        app:layout_constraintTop_toBottomOf="@+id/btnPredictSinhala"
         app:srcCompat="@drawable/symptom_btn" />
 
     <ImageButton
@@ -41,23 +41,21 @@
         android:maxHeight="160dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.967"
+        app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58"
-        app:srcCompat="@drawable/btn_remedy" />
+        app:layout_constraintTop_toBottomOf="@+id/btnPredictSinhala"
+        app:srcCompat="@drawable/remedy_btn_english" />
 
     <ImageButton
         android:id="@+id/btnPredictSinhala"
         android:layout_width="385dp"
         android:layout_height="195dp"
-        android:layout_marginTop="29dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/backgroundEnglish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRemedySinhala"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toTopOf="@+id/backgroundEnglish"
+        app:layout_constraintVertical_bias="0.588"
         app:srcCompat="@drawable/predict_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
