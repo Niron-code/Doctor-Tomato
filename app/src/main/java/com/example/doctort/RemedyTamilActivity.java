@@ -42,7 +42,7 @@ public class RemedyTamilActivity extends AppCompatActivity {
     }
     private void setPlay() {
         if(player == null){
-            player = MediaPlayer.create(RemedyTamilActivity.this, R.raw.tamilremedy);
+            player = MediaPlayer.create(RemedyTamilActivity.this, R.raw.remedy_tamil);
         }
         player.start();
         Toast.makeText(this,"ஆரம்பமாகிவிட்டது", Toast.LENGTH_SHORT).show();
@@ -59,7 +59,7 @@ public class RemedyTamilActivity extends AppCompatActivity {
 
     private void setStop() {
         player.stop();
-        player = MediaPlayer.create(RemedyTamilActivity.this, R.raw.tamilremedy);
+        player = MediaPlayer.create(RemedyTamilActivity.this, R.raw.remedy_tamil);
         Toast.makeText(this,"நிறுத்தப்பட்டது", Toast.LENGTH_SHORT).show();
     }
 

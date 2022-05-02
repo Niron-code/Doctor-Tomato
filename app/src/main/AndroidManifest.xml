@@ -3,34 +3,38 @@
     package="com.example.doctort">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/dtlogo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.doctort.RemedyTamilActivity"></activity>
-        <activity android:name="com.example.doctort.RemedySinhalaActivity" />
-        <activity android:name="com.example.doctort.SymptomSinhalaActivity" />
-        <activity android:name="com.example.doctort.SymptomsTamilActivity" />
-        <activity android:name="com.example.doctort.HomeSinhalaActivity" />
-        <activity android:name="com.example.doctort.PredictSinhalaActivity" />
-        <activity android:name="com.example.doctort.HomeTamilActivity" />
-        <activity android:name="com.example.doctort.PredictTamilActivity" />
-        <activity android:name="com.example.doctort.LanguageActivity" />
-        <activity android:name="com.example.doctort.PredictEnglishActivity" />
-        <activity android:name="com.example.doctort.SymptomEnglishActivity" />
-        <activity android:name="com.example.doctort.RemedyEnglishActivity" />
-        <activity android:name="com.example.doctort.SplashActivity">
+        <activity android:name=".CallerSinhalaActivity"></activity>
+        <activity android:name=".CallerTamilActivity" />
+        <activity android:name=".CallerEnglishActivity" />
+        <activity android:name=".RemedyTamilActivity" />
+        <activity android:name=".RemedySinhalaActivity" />
+        <activity android:name=".SymptomSinhalaActivity" />
+        <activity android:name=".SymptomsTamilActivity" />
+        <activity android:name=".HomeSinhalaActivity" />
+        <activity android:name=".PredictSinhalaActivity" />
+        <activity android:name=".HomeTamilActivity" />
+        <activity android:name=".PredictTamilActivity" />
+        <activity android:name=".LanguageActivity" />
+        <activity android:name=".PredictEnglishActivity" />
+        <activity android:name=".SymptomEnglishActivity" />
+        <activity android:name=".RemedyEnglishActivity" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.doctort.HomeEnglishActivity" />
+        <activity android:name=".HomeEnglishActivity" />
     </application>
 
 </manifest>

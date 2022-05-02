@@ -8,24 +8,22 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.doctort.R;
-
 public class HomeSinhalaActivity extends AppCompatActivity {
 
-    private ImageButton btnSymptomSihala, btnRemedySinhala, btnPredictSinhala;
+    private ImageButton btnSymptomSihala, btnRemedySinhala, btnPredictSinhala, btnHelpSinhala;
     private boolean play = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_sinhala);
 
-        btnSymptomSihala = (ImageButton) findViewById(R.id.btnSymptomSinhala);
+        btnSymptomSihala = (ImageButton) findViewById(R.id.btnSymptomTamil);
         btnSymptomSihala.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { openSymptomSinhala();}
         });
 
-        btnRemedySinhala = findViewById(R.id.btnRemedySinhala);
+        btnRemedySinhala = findViewById(R.id.btnRemedyTamil);
         btnRemedySinhala.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,13 +31,27 @@ public class HomeSinhalaActivity extends AppCompatActivity {
             }
         });
 
-        btnPredictSinhala = findViewById(R.id.btnPredictSinhala);
+        btnPredictSinhala = findViewById(R.id.btnPredictTamil);
         btnPredictSinhala.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openPredictSinhala ();
             }
         });
+
+        btnHelpSinhala = findViewById(R.id.btnHelpSinhala);
+        btnHelpSinhala.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openHelp ();
+            }
+        });
+    }
+
+    public void openHelp() {
+        Intent help_intent = new Intent(HomeSinhalaActivity.this, CallerSinhalaActivity.class);
+        Toast.makeText(this,"ඇමතුමක් ලබා දී උදව් ලබා ගන්න", Toast.LENGTH_SHORT).show();
+        startActivity(help_intent);
     }
 
     public void openSymptomSinhala (){

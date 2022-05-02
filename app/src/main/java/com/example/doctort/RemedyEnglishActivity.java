@@ -42,7 +42,7 @@ public class RemedyEnglishActivity extends AppCompatActivity {
     }
     private void setPlay() {
         if(player == null){
-            player = MediaPlayer.create(RemedyEnglishActivity.this, R.raw.englishremedy);
+            player = MediaPlayer.create(RemedyEnglishActivity.this, R.raw.remedy_english);
 
         }
         Toast.makeText(this,"Playing", Toast.LENGTH_SHORT).show();
@@ -61,7 +61,7 @@ public class RemedyEnglishActivity extends AppCompatActivity {
     private void setStop() {
         player.stop();
         Toast.makeText(this,"Stopped", Toast.LENGTH_SHORT).show();
-        player = MediaPlayer.create(RemedyEnglishActivity.this, R.raw.englishremedy);
+        player = MediaPlayer.create(RemedyEnglishActivity.this, R.raw.remedy_english);
     }
 
     @Override

@@ -8,24 +8,22 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.doctort.R;
-
 public class HomeTamilActivity extends AppCompatActivity {
 
-    private ImageButton btnSymptom, btnRemedy, btnPredictTamil;
+    private ImageButton btnSymptom, btnRemedy, btnPredictTamil, btnHelpTamil;
     private boolean play = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_tamil);
 
-        btnSymptom = (ImageButton) findViewById(R.id.btnSymptomSinhala);
+        btnSymptom = (ImageButton) findViewById(R.id.btnSymptomTamil);
         btnSymptom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { openSymptom();}
         });
 
-        btnRemedy = findViewById(R.id.btnRemedySinhala);
+        btnRemedy = findViewById(R.id.btnRemedyTamil);
         btnRemedy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,13 +31,27 @@ public class HomeTamilActivity extends AppCompatActivity {
             }
         });
 
-        btnPredictTamil = findViewById(R.id.btnPredictSinhala);
+        btnPredictTamil = findViewById(R.id.btnPredictTamil);
         btnPredictTamil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openPredictTamil ();
             }
         });
+
+        btnHelpTamil = findViewById(R.id.btnHelpTamil);
+        btnHelpTamil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openHelp ();
+            }
+        });
+    }
+
+    public void openHelp() {
+        Intent help_intent = new Intent(HomeTamilActivity.this, CallerTamilActivity.class);
+        Toast.makeText(this,"அழைப்பு செய்து உதவி பெறவும்", Toast.LENGTH_SHORT).show();
+        startActivity(help_intent);
     }
 
     public void openSymptom (){

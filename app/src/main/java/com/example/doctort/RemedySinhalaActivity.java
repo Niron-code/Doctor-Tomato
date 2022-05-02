@@ -44,7 +44,7 @@ public class RemedySinhalaActivity extends AppCompatActivity {
 
     private void setPlay() {
         if(player == null){
-            player = MediaPlayer.create(RemedySinhalaActivity.this, R.raw.remedysinhala);
+            player = MediaPlayer.create(RemedySinhalaActivity.this, R.raw.remedy_sinhala);
         }
         player.start();
         Toast.makeText(this,"ආරම්භ කළා", Toast.LENGTH_SHORT).show();
@@ -63,7 +63,7 @@ public class RemedySinhalaActivity extends AppCompatActivity {
         if(player != null) {
             player.stop();
             Toast.makeText(this, "නැවැත්තුවා", Toast.LENGTH_SHORT).show();
-            player = MediaPlayer.create(RemedySinhalaActivity.this, R.raw.remedysinhala);
+            player = MediaPlayer.create(RemedySinhalaActivity.this, R.raw.remedy_sinhala);
         }
     }
 

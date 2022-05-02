@@ -8,11 +8,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.doctort.R;
-
 public class HomeEnglishActivity extends AppCompatActivity {
 
-    private ImageButton btnSymptom, btnRemedy, btnPredict;
+    private ImageButton btnSymptom, btnRemedy, btnPredict, btnHelp;
     private boolean play = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +18,7 @@ public class HomeEnglishActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_english);
 
 
-        btnSymptom = (ImageButton) findViewById(R.id.btnSymptomSinhala);
+        btnSymptom = (ImageButton) findViewById(R.id.btnSymptomTamil);
         btnSymptom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,7 +26,7 @@ public class HomeEnglishActivity extends AppCompatActivity {
             }
         });
 
-        btnRemedy = findViewById(R.id.btnRemedySinhala);
+        btnRemedy = findViewById(R.id.btnRemedyTamil);
         btnRemedy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,14 +34,29 @@ public class HomeEnglishActivity extends AppCompatActivity {
             }
         });
 
-        btnPredict = findViewById(R.id.btnPredictSinhala);
+        btnPredict = findViewById(R.id.btnPredictTamil);
         btnPredict.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openPredict ();
             }
         });
+
+        btnHelp = findViewById(R.id.btnHelpSinhala);
+        btnHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openHelp ();
+            }
+        });
     }
+
+    public void openHelp() {
+        Intent help_intent = new Intent(HomeEnglishActivity.this, CallerEnglishActivity.class);
+        Toast.makeText(this,"Call and get help", Toast.LENGTH_SHORT).show();
+        startActivity(help_intent);
+    }
+
     public void openSymptom (){
         Intent symtom_intent = new Intent(HomeEnglishActivity.this, SymptomEnglishActivity.class);
         Toast.makeText(this,"Symptoms", Toast.LENGTH_SHORT).show();
