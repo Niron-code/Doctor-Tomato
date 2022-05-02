@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/sinhaladashboard" />
+        app:srcCompat="@drawable/englishdashboardnew" />
 
     <ImageButton
         android:id="@+id/btnSymptomTamil"
@@ -30,7 +30,7 @@
         app:layout_constraintHorizontal_bias="0.62"
         app:layout_constraintStart_toEndOf="@+id/btnPredictTamil"
         app:layout_constraintTop_toTopOf="@+id/backgroundEnglish"
-        app:layout_constraintVertical_bias="0.57"
+        app:layout_constraintVertical_bias="0.611"
         app:srcCompat="@drawable/symptom_btn_sinhala" />
 
     <ImageButton
@@ -43,10 +43,10 @@
         android:maxHeight="160dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnHelpSinhala"
-        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPredictTamil"
-        app:layout_constraintVertical_bias="0.225"
+        app:layout_constraintVertical_bias="0.366"
         app:srcCompat="@drawable/remedy_btn_sinhala2" />
 
     <ImageButton
@@ -59,10 +59,10 @@
         android:maxHeight="160dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.949"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSymptomTamil"
-        app:layout_constraintVertical_bias="0.22000003"
+        app:layout_constraintVertical_bias="0.366"
         app:srcCompat="@drawable/help_btn_sinhala" />
 
     <ImageButton
@@ -72,10 +72,10 @@
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/backgroundEnglish"
-        app:layout_constraintVertical_bias="0.57"
+        app:layout_constraintVertical_bias="0.611"
         app:srcCompat="@drawable/predict_btn_sinhala1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

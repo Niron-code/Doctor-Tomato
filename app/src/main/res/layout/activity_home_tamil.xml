@@ -14,7 +14,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/tamildashboard"
+        app:srcCompat="@drawable/englishdashboardnew"
         tools:layout_editor_absoluteX="0dp" />
 
     <ImageButton
@@ -29,7 +29,7 @@
         app:layout_constraintHorizontal_bias="0.926"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.916"
+        app:layout_constraintVertical_bias="0.968"
         app:srcCompat="@drawable/symptom_btn_tamil" />
 
     <ImageButton
@@ -74,7 +74,7 @@
         app:layout_constraintHorizontal_bias="0.64"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.916"
+        app:layout_constraintVertical_bias="0.966"
         app:srcCompat="@drawable/predict_btn_tamil1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
